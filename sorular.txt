@@ -1,0 +1,4 @@
+önyüz
+şuanki projede geçmiş kaydediliyor mu? yani uygulamayı kapatıp tekrar açtığımda chat'ler duruyor mu?
+- eğer duruyorsa bir http isteği ile geçmiş chat'i alacağız. kullanıcı o chat'e geldiğinde önyüzde geçmiş chat'i göstereceğiz.
+

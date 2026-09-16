@@ -1,0 +1,1810 @@
+:root {
+  --bg-primary: #f7f7f8;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f1f3;
+  --bg-hover: #ececef;
+
+  --text-primary: #202123;
+  --text-secondary: #6b7280;
+  --text-muted: #8b9098;
+
+  --border-color: #e5e7eb;
+  --border-strong: #d1d5db;
+
+  --accent: #f97316;
+  --accent-hover: #fb923c;
+
+  --user-message-bg: #f97316;
+  --user-message-text: #ffffff;
+
+  --bot-message-bg: #ffffff;
+  --bot-message-text: #202123;
+
+  --shadow-soft: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #111315;
+  --bg-secondary: #181a1d;
+  --bg-tertiary: #202327;
+  --bg-hover: #292c31;
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #b8bcc4;
+  --text-muted: #8b9098;
+
+  --border-color: #2b2e33;
+  --border-strong: #34383f;
+
+  --accent: #f97316;
+  --accent-hover: #fb923c;
+
+  --user-message-bg: #f97316;
+  --user-message-text: #ffffff;
+
+  --bot-message-bg: #202327;
+  --bot-message-text: #e5e7eb;
+
+  --shadow-soft: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* APP */
+
+.app {
+  display: flex;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 260px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* SIDEBAR BRAND */
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 20px;
+  padding: 2px 2px 4px;
+}
+
+.sidebar-brand-icon {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  font-size: 20px;
+}
+
+.sidebar-brand-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-brand-title {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sidebar-brand-subtitle {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* MODE SWITCH */
+
+.mode-switch {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: 11px;
+  background-color: var(--bg-tertiary);
+}
+
+.mode-option {
+  flex: 1;
+  min-width: 0;
+  /* Üç sekme dar menüye sığsın diye yatay boşluk küçük tutulur. */
+  padding: 8px 4px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.mode-option:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.mode-option.active-mode {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+/* NEW CHAT BUTTON */
+
+.new-chat-button {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  background-color: var(--accent);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.new-chat-button:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(249, 115, 22, 0.22);
+}
+
+.new-chat-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* CHAT LIST */
+
+.chat-list {
+  margin-top: 20px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.chat-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-list::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 10px;
+}
+
+.chat-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  padding: 11px 12px;
+  margin-bottom: 5px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  color: var(--text-secondary);
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.chat-item:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  transform: translateX(2px);
+}
+
+.chat-item.active-chat {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  border-left: 3px solid var(--accent);
+  color: var(--text-primary);
+}
+
+.chat-title {
+  flex: 1;
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 14px;
+}
+
+.delete-chat-button {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 7px;
+
+  background: transparent;
+  color: var(--text-muted);
+
+  cursor: pointer;
+  font-size: 13px;
+
+  opacity: 0;
+
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.chat-item:hover .delete-chat-button,
+.chat-item.active-chat .delete-chat-button {
+  opacity: 0.7;
+}
+
+.delete-chat-button:hover {
+  opacity: 1 !important;
+  background-color: var(--bg-hover);
+  color: #ef4444;
+}
+
+/* CHAT AREA */
+
+.chat-area {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 18% 25%,
+      rgba(249, 115, 22, 0.16),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 82% 72%,
+      rgba(99, 102, 241, 0.13),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 55% 45%,
+      rgba(249, 115, 22, 0.05),
+      transparent 45%
+    ),
+    var(--bg-primary);
+
+  background-size: 150% 150%;
+  animation: chatBackgroundMove 12s ease-in-out infinite alternate;
+}
+
+/* Açık temada renk halkaları daha soluk tutulur. Bu kural önceden .chat-area
+   bloğunun içinde yazılıydı ve ".chat-area içindeki .chat-area" anlamına
+   geldiği için hiçbir elemanla eşleşmiyordu. */
+[data-theme="light"] .chat-area {
+  background:
+    radial-gradient(
+      circle at 18% 25%,
+      rgba(249, 115, 22, 0.11),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 82% 72%,
+      rgba(99, 102, 241, 0.08),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 55% 45%,
+      rgba(249, 115, 22, 0.04),
+      transparent 45%
+    ),
+    var(--bg-primary);
+
+  background-size: 150% 150%;
+}
+
+@keyframes chatBackgroundMove {
+  0% {
+    background-position:
+      0% 0%,
+      100% 100%;
+  }
+
+  100% {
+    background-position:
+      15% 10%,
+      85% 90%;
+  }
+}
+
+/* CHAT HEADER */
+
+.chat-header {
+  padding: 20px 30px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.chat-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* MESSAGES */
+
+.messages {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background-color: var(--border-strong);
+  border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent);
+}
+
+/* WELCOME */
+
+.welcome-message {
+  max-width: 620px;
+  margin: auto;
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.welcome-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  font-size: 26px;
+  color: var(--accent);
+  box-shadow: var(--shadow-soft);
+}
+
+.welcome-message h2 {
+  margin: 0 0 10px;
+  font-size: 30px;
+  font-weight: 700;
+  /* Önceden index.css'teki şablon h2 kuralından geliyordu; görünüm aynı kalsın. */
+  line-height: 1.18;
+  letter-spacing: -0.24px;
+  color: var(--text-primary);
+}
+
+.welcome-message p {
+  max-width: 520px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.welcome-tips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.welcome-tips span {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+/* MESSAGE WRAPPER */
+
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.user-wrapper {
+  align-items: flex-end;
+}
+
+.bot-wrapper {
+  align-items: flex-start;
+}
+
+.message-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+
+.user-wrapper .message-row {
+  justify-content: flex-end;
+}
+
+/* AGENT EMOTION */
+
+.message-emotion {
+  flex-shrink: 0;
+  font-size: 22px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+/* USER MESSAGE */
+
+.user-message {
+  width: fit-content;
+  max-width: 68%;
+
+  padding: 12px 16px;
+
+  border-radius: 16px 16px 5px 16px;
+
+  background-color: var(--user-message-bg);
+  color: var(--user-message-text);
+
+  line-height: 1.5;
+  font-size: 15px;
+
+  box-shadow: 0 3px 10px rgba(249, 115, 22, 0.12);
+}
+
+/* BOT MESSAGE */
+
+.bot-message {
+  width: fit-content;
+  max-width: 68%;
+
+  padding: 12px 16px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 16px 16px 16px 5px;
+
+  background-color: var(--bot-message-bg);
+  color: var(--bot-message-text);
+
+  line-height: 1.5;
+  font-size: 15px;
+
+  box-shadow: var(--shadow-soft);
+}
+
+/* LOADING */
+
+.loading-message {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+}
+
+.loading-dot {
+  font-size: 10px;
+  opacity: 0.4;
+  animation: loadingPulse 1.2s infinite ease-in-out;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loadingPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+/* INPUT AREA */
+
+.input-area {
+  padding: 16px 30px;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-row {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+/* FILE BUTTON */
+
+.file-button {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+  color: var(--text-secondary);
+
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+
+  padding-bottom: 7px;
+  padding-left: 2px;
+  box-sizing: border-box;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.file-button:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+/* MESSAGE INPUT */
+
+.message-input {
+  flex: 1;
+  min-width: 0;
+  height: 42px;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.message-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Odak görünümü input'a değil, çevresindeki .message-composer:focus-within
+   kuralına bırakılır; aksi halde kutunun içinde farklı renkte ikinci bir kutu belirir. */
+
+/* MESSAGE COMPOSER */
+
+.message-composer {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 6px 5px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  background-color: var(--bg-tertiary);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.message-composer:focus-within {
+  border-color: var(--accent);
+  background-color: var(--bg-secondary);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+/* SEND BUTTON */
+
+.send-button {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--accent);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.22);
+}
+
+.send-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.send-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* SELECTED FILES */
+
+.selected-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.selected-file {
+  width: fit-content;
+  max-width: 320px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  padding: 7px 10px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  color: var(--text-secondary);
+}
+
+.selected-file-name {
+  min-width: 0;
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.remove-file-button {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.remove-file-button:hover {
+  color: var(--text-primary);
+}
+
+/* DOCUMENTS PANEL */
+
+.documents-panel {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  background-color: var(--bg-secondary);
+  border-left: 1px solid var(--border-color);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+
+.documents-header {
+  height: 68px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 18px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.documents-header h3 {
+  margin: 0;
+
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* PANEL CLOSE BUTTON */
+
+.documents-toggle-button {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--text-secondary);
+
+  cursor: pointer;
+  font-size: 18px;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.documents-toggle-button:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* DOCUMENT LIST */
+
+.documents-list {
+  flex: 1;
+  min-height: 0;
+
+  padding: 14px 12px;
+
+  overflow-y: auto;
+}
+
+.documents-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.documents-list::-webkit-scrollbar-thumb {
+  background-color: var(--border-strong);
+  border-radius: 10px;
+}
+
+/* EMPTY STATE */
+
+.no-documents {
+  margin: 20px 8px;
+
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* DOCUMENT CARD */
+
+.document-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-height: 46px;
+  box-sizing: border-box;
+
+  margin-bottom: 8px;
+  padding: 9px 10px;
+
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 11px;
+
+  color: var(--text-primary);
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.document-item:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+/* DOCUMENT ICON */
+
+.document-icon {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+  background-color: var(--bg-secondary);
+
+  font-size: 15px;
+}
+
+/* DOCUMENT NAME */
+
+.document-name {
+  flex: 1;
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+/* DELETE DOCUMENT */
+
+.document-delete-button {
+  width: 27px;
+  height: 27px;
+  min-width: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 7px;
+
+  background: transparent;
+  color: var(--text-muted);
+
+  cursor: pointer;
+  font-size: 12px;
+
+  opacity: 0;
+
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.document-item:hover .document-delete-button {
+  opacity: 1;
+}
+
+.document-delete-button:hover {
+  background-color: var(--bg-secondary);
+  color: #ef4444;
+}
+
+/* CLOSED DOCUMENT PANEL */
+
+.documents-open-button {
+  width: 38px;
+  height: 100vh;
+
+  border: none;
+  border-left: 1px solid var(--border-color);
+
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+
+  cursor: pointer;
+  font-size: 18px;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.documents-open-button:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--accent);
+}
+
+/* SOURCES */
+
+.message-sources {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 6px;
+  margin-left: 4px;
+}
+
+.source-bubble {
+  position: relative;
+
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+
+  font-size: 12px;
+
+  cursor: default;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.source-bubble:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+/* SOURCE TOOLTIP */
+
+.source-tooltip {
+  position: absolute;
+
+  bottom: 34px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  padding: 7px 9px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+
+  font-size: 12px;
+  white-space: nowrap;
+
+  box-shadow: var(--shadow-soft);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.15s ease,
+    visibility 0.15s ease;
+}
+
+.source-bubble:hover .source-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* PROVIDER SETTINGS */
+
+.provider-settings {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.provider-settings label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.provider-settings select {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.provider-settings select:focus {
+  border-color: var(--accent);
+}
+
+/* THEME BUTTON */
+
+.theme-button {
+  width: 100%;
+  height: 40px;
+  margin-top: 12px;
+
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.theme-button:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .documents-panel {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  .sidebar {
+    width: 220px;
+  }
+}
+
+@media (max-width: 650px) {
+  .sidebar {
+    width: 190px;
+    padding: 14px;
+  }
+
+  .mode-option {
+    padding: 7px 4px;
+    font-size: 11px;
+  }
+
+  .documents-panel {
+    display: none;
+  }
+
+  .input-area {
+    padding: 14px 16px;
+  }
+
+  .input-row {
+    gap: 8px;
+  }
+
+  .file-button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .message-input {
+    height: 40px;
+  }
+
+  .send-button {
+    width: 44px;
+    height: 40px;
+    min-width: 44px;
+  }
+
+  .selected-file-name {
+    max-width: 220px;
+  }
+
+  .messages {
+    padding: 20px 16px;
+  }
+
+  .user-message,
+  .bot-message {
+    max-width: 85%;
+  }
+}
+
+/* FINAL UI POLISH */
+
+/* Ana içerik alanını daha dengeli yap */
+.messages {
+  padding: 26px 28px 22px;
+}
+
+/* Welcome ekranını gerçek merkeze yaklaştır */
+.welcome-message {
+  margin: auto;
+  padding-bottom: 90px;
+}
+
+/* Header biraz daha kompakt */
+.chat-header {
+  height: 64px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 24px;
+}
+
+.chat-header h1 {
+  font-size: 17px;
+  font-weight: 600;
+  /* index.css'teki büyük h1 için ayarlanmış negatif harf aralığı burada harfleri sıkıştırıyordu. */
+  letter-spacing: inherit;
+
+  /* Uzun sohbet adları başlığa sığmazsa "..." ile kısaltılır. */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Mesajlar arası boşluğu azalt */
+.user-message,
+.bot-message {
+  margin-bottom: 8px;
+  /* Cevaplardaki satır sonları (maddeler) korunur; fazla boşluklar birleşir. */
+  white-space: pre-line;
+}
+
+/* Kaynak ikonunun mesajdan fazla kopmasını engelle */
+.message-sources {
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+/* Mesajların genişliğini biraz dengeli yap */
+.user-message,
+.bot-message {
+  max-width: 68%;
+}
+
+/* Alt input alanını biraz daha kompakt yap */
+.input-area {
+  padding: 12px 28px;
+}
+
+.message-composer {
+  min-height: 48px;
+}
+
+/* Sidebar alt bölüm */
+.provider-settings {
+  gap: 8px;
+  padding-top: 14px;
+}
+
+.provider-settings select {
+  height: 38px;
+}
+
+.theme-button {
+  height: 40px;
+}
+
+/* Sağ belge panelini biraz daralt */
+.documents-panel {
+  width: 240px;
+  min-width: 240px;
+}
+
+/* Belge paneli başlığını chat header ile hizala */
+.documents-header {
+  height: 64px;
+}
+
+/* Boş belge mesajını daha düzgün konumlandır */
+.no-documents {
+  margin-top: 28px;
+  padding: 0 10px;
+}
+
+/* Belge kartları daha kompakt */
+.document-item {
+  min-height: 44px;
+  margin-bottom: 7px;
+}
+
+/* Sidebar brand ile header ritmini yaklaştır */
+.sidebar-brand {
+  min-height: 44px;
+}
+
+/* Chat list öğeleri biraz daha sıkı */
+.chat-item {
+  padding: 10px 11px;
+  margin-bottom: 4px;
+}
+
+.voice-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px;
+}
+
+.voice-button:hover {
+  opacity: 0.7;
+}
+
+.voice-button.listening {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* VOICE CHAT TOGGLE */
+
+.voice-chat-toggle {
+  height: 34px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 0 11px;
+
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+
+  background-color: transparent;
+  color: var(--text-secondary);
+
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.voice-chat-toggle:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.voice-chat-toggle.active {
+  border-color: var(--accent);
+  background-color: rgba(249, 115, 22, 0.12);
+  color: var(--accent);
+}
+
+/* VOICE STAGE (sesli sekmenin üst bölümü) */
+
+.voice-stage {
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  padding: 22px 24px 18px;
+
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+}
+
+.voice-stage-avatar {
+  width: 88px;
+  height: 88px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+
+  background-color: var(--bg-tertiary);
+  box-shadow: var(--shadow-soft);
+
+  font-size: 44px;
+  line-height: 1;
+
+  transition: transform 0.2s ease;
+}
+
+/* Konuşurken nabız gibi atar, düşünürken hafifçe sallanır. */
+.voice-stage.playing .voice-stage-avatar {
+  animation: voiceStagePulse 1.4s ease-in-out infinite;
+}
+
+.voice-stage.thinking .voice-stage-avatar,
+.voice-stage.loading .voice-stage-avatar {
+  animation: voiceStageSway 1.8s ease-in-out infinite;
+}
+
+@keyframes voiceStagePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.35);
+  }
+
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 14px rgba(249, 115, 22, 0);
+  }
+}
+
+@keyframes voiceStageSway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.voice-stage-player {
+  width: 100%;
+  max-width: 520px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.voice-stage-button {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: var(--accent);
+  color: #ffffff;
+
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.voice-stage-button:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+.voice-stage.loading .voice-stage-button {
+  animation: loadingPulse 1.2s infinite ease-in-out;
+}
+
+.voice-stage-wave {
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  cursor: pointer;
+}
+
+.voice-stage.is-placeholder .voice-stage-wave {
+  opacity: 0.35;
+}
+
+.voice-stage-time {
+  flex-shrink: 0;
+
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.voice-stage-status {
+  color: var(--text-secondary);
+  font-size: 13px;
+  text-align: center;
+}
+
+.voice-stage.error .voice-stage-status {
+  color: #ef4444;
+}
+
+@media (max-width: 650px) {
+  .voice-stage {
+    padding: 16px 14px 12px;
+    gap: 10px;
+  }
+
+  .voice-stage-avatar {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+
+  .voice-stage-wave {
+    height: 36px;
+  }
+}
+
+/* MİKROFON BUTONU (sesli sekme) */
+
+.voice-record-button {
+  height: 40px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 0 14px;
+
+  border: none;
+  border-radius: 999px;
+
+  background-color: var(--accent);
+  color: #ffffff;
+
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.voice-record-button:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  transform: scale(1.03);
+}
+
+.voice-record-button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* Kayıt sürerken buton kırmızıya döner ve nabız atar. */
+.voice-record-button.recording {
+  background-color: #ef4444;
+  animation: voiceRecordPulse 1.3s ease-in-out infinite;
+}
+
+@keyframes voiceRecordPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.45);
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+}
+
+.voice-record-error {
+  color: #ef4444;
+  font-size: 12px;
+}
+
+/* Sahnede mikrofon dinlerken emoji de hareket etsin. */
+.voice-stage.listening .voice-stage-avatar,
+.voice-stage.transcribing .voice-stage-avatar {
+  animation: voiceStageSway 1.8s ease-in-out infinite;
+}
+
+@media (max-width: 650px) {
+  .voice-record-button {
+    padding: 0 11px;
+  }
+
+  .voice-record-label {
+    display: none;
+  }
+}
+
+/* VOICE MESSAGE (sesli sekmedeki ses balonu) */
+
+.voice-message {
+  width: fit-content;
+  max-width: 68%;
+  min-width: 240px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 14px 8px 8px;
+  margin-bottom: 8px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 16px 16px 16px 5px;
+
+  background-color: var(--bot-message-bg);
+  box-shadow: var(--shadow-soft);
+}
+
+.voice-message.playing {
+  border-color: var(--accent);
+}
+
+.voice-message-button {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: var(--accent);
+  color: #ffffff;
+
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.voice-message-button:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+.voice-message.loading .voice-message-button {
+  animation: loadingPulse 1.2s infinite ease-in-out;
+}
+
+.voice-message.error .voice-message-button {
+  background-color: var(--bg-tertiary);
+  color: #ef4444;
+}
+
+/* DALGA FORMU */
+
+.voice-message-wave {
+  flex: 1;
+  min-width: 0;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  cursor: pointer;
+}
+
+.voice-wave-bar {
+  flex: 1;
+  min-width: 2px;
+
+  border-radius: 2px;
+  background-color: var(--border-strong);
+
+  transition:
+    background-color 0.12s linear,
+    height 0.2s ease;
+}
+
+.voice-wave-bar.played {
+  background-color: var(--accent);
+}
+
+/* Ses henüz çözülmediğinde gösterilen yer tutucu desen soluk durur. */
+.voice-message.is-placeholder .voice-message-wave {
+  opacity: 0.4;
+}
+
+.voice-message-time {
+  flex-shrink: 0;
+
+  color: var(--text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.voice-message-error {
+  flex: 1;
+  color: #ef4444;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .voice-message {
+    max-width: 85%;
+    min-width: 0;
+  }
+}
+
+/* MESSAGE AUDIO */
+
+.message-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-top: -2px;
+  margin-bottom: 8px;
+  margin-left: 4px;
+}
+
+/* Duygu emojisi olan mesajlarda buton, balonun altına hizalanır. */
+.message-actions.has-emotion {
+  margin-left: 34px;
+}
+
+.message-audio-button {
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 0 9px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.message-audio-button:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.message-audio-button.playing {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.message-audio-button.loading {
+  cursor: progress;
+}
+
+.message-audio-button.playing .message-audio-icon,
+.message-audio-button.loading .message-audio-icon {
+  animation: loadingPulse 1.2s infinite ease-in-out;
+}
+
+.message-audio-error {
+  color: #ef4444;
+  font-size: 12px;
+}
+
+@media (max-width: 650px) {
+  .voice-chat-toggle {
+    padding: 0 9px;
+  }
+
+  .voice-chat-toggle-label {
+    display: none;
+  }
+
+  .message-actions.has-emotion {
+    margin-left: 4px;
+  }
+}

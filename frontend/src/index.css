@@ -1,0 +1,45 @@
+:root {
+  --text: #6b6375;
+  --bg: #fff;
+
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+/* Uygulama çizilene kadar sayfa zemini işletim sisteminin temasına uyar. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --bg: #16171d;
+  }
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}

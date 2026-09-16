@@ -1,0 +1,9 @@
+backend/__pycache__/
+backend/chatbot.db
+backend/chroma_db/
+backend/uploads/
+backend/venv/
+backend/uploads/
+backend/audio_cache/
+*.pyc
+.env
